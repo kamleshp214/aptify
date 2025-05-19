@@ -1,15 +1,24 @@
 import os
 import logging
+from datetime import datetime
 from flask import Flask, render_template, request, jsonify
+from dotenv import load_dotenv
 from api.gemini import get_mcq_questions
 from api.fallback_questions import get_fallback_questions
+from health import health_bp
 
 # Configure logging
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
+
+# Load environment variables
+load_dotenv()
 
 # Create Flask app
 app = Flask(__name__)
 app.secret_key = os.environ.get("SESSION_SECRET", "aptify-secret-key")
+
+# Register blueprints
+app.register_blueprint(health_bp, url_prefix='/')
 
 # Routes
 @app.route('/')
@@ -65,4 +74,6 @@ def get_questions():
         return jsonify({"status": "error", "message": str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    debug = os.environ.get('FLASK_ENV') == 'development'
+    app.run(host='0.0.0.0', port=port, debug=debug)
