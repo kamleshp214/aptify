@@ -1,0 +1,448 @@
+Based on your request, I’ll enhance the Aptify project prompt by:
+
+Reshuffling the navigation bar to place Leaderboard and About after Start Quiz.
+Providing a more detailed version of the prompt, with a strong focus on the frontend specifications (UI, animations, responsiveness, and components).
+Adding GitHub and LinkedIn icons linked to your profile (I’ll assume placeholder URLs; please provide your actual URLs if desired).
+Expanding on all sections for clarity, modularity, and actionable guidance, ensuring the prompt is comprehensive for developers.
+This refined prompt builds on the previous version, deepening the frontend details, clarifying the navigation changes, and incorporating social media icons. I’ll maintain the black-and-white theme, mobile-first approach, and Gemini API integration, while ensuring the README artifact is updated and the structure remains organized.
+
+🔥 Detailed Project Prompt: Aptify – A Professional Aptitude Test Practice Platform for BTech Students
+🧩 Project Overview
+Aptify is a mobile-first, professional web platform designed to empower BTech students to excel in campus placement aptitude tests. It features a sleek, black-and-white-only interface with glassmorphism aesthetics, real-time multiple-choice question (MCQ) generation via the Google Gemini Free API, interactive full-length quizzes, a local leaderboard (no login required), and downloadable PDF reports with embedded charts. The platform prioritizes a modern, animated user experience, leveraging local storage for persistence and a clean, professional design.
+
+Slogan: Sharpen your aptitude. Conquer your campus placement.
+
+Target Audience: BTech students preparing for aptitude-based placement exams.
+
+🎯 Objectives
+Deliver a minimal, elegant, and professional UI with a strict black-and-white color scheme.
+Ensure mobile-first responsiveness for seamless use on small screens (320px+).
+Integrate Gemini Free API for dynamic MCQ generation across Aptitude, Reasoning, Verbal, and Mixed categories.
+Provide interactive quizzes with timers, scoring, skip functionality, and detailed result breakdowns.
+Generate PDF reports with scores, question-wise analysis, and Chart.js visualizations.
+Maintain a local leaderboard using localStorage or a JSON file, sorted by score and time.
+Incorporate smooth animations, hover effects, and transitions for an engaging UX.
+Include GitHub and LinkedIn icons linking to the developer’s profiles in the footer and About page.
+Ensure robust error handling for API failures, PDF generation, and user inputs.
+🔧 Technology Stack
+Frontend
+HTML5: Semantic structure for accessibility and SEO.
+Tailwind CSS: Utility-first styling for rapid development and consistent black-and-white theming.
+Vanilla JavaScript: Preferred for simplicity and performance; React optional for complex state management.
+Chart.js: For generating score visualizations (pie and bar charts) in the UI and PDF reports.
+jsPDF + html2canvas: For creating downloadable PDF reports with embedded charts.
+Font Awesome / Heroicons: For minimal, black-and-white icons (e.g., brain, trophy, GitHub, LinkedIn).
+CSS Animations: For smooth transitions, hover effects, and page loads.
+Backend
+Python: FastAPI (preferred for async performance) or Flask for lightweight API endpoints.
+Gemini Free API: For generating dynamic MCQ questions.
+JSON File: Optional for server-side leaderboard persistence.
+Storage
+localStorage: Primary storage for usernames, quiz results, and leaderboard data.
+leaderboard.json: Optional server-side storage for leaderboard data.
+Fonts
+Primary: Inter (weights: 400, 500, 700) for headings and body text.
+Secondary: Roboto Mono (weights: 400, 500) for code-like text or secondary elements.
+Source: Google Fonts or local assets for offline support.
+Icons
+Font Awesome or Heroicons for clean, outlined icons.
+Required Icons:
+Quiz categories: Brain (Reasoning), Calculator (Aptitude), Book (Verbal), Puzzle (Mixed).
+Leaderboard: Trophy or bar chart.
+Social: GitHub, LinkedIn (linked to developer’s profiles).
+Ensure icons are black-and-white and scalable (SVG format preferred).
+🔎 Features & Requirements
+🖥️ Frontend Design Specifications
+Theme
+Color Palette:
+Black (#000000): Backgrounds, text.
+White (#FFFFFF): Backgrounds, text.
+Grays (#333333, #666666, #999999, #CCCCCC): Accents, borders, hover effects.
+No Images: Use SVGs, icons, or CSS shapes for visuals.
+Style: Glassmorphism with:
+Frosted-glass effects (backdrop-filter: blur(8px)).
+Subtle shadows (box-shadow: 0 4px 15px rgba(0,0,0,0.1)).
+Sharp edges (no rounded corners unless specified).
+Accessibility:
+High contrast (e.g., white text on black background).
+ARIA labels for interactive elements (e.g., buttons, modals).
+Keyboard navigation support.
+Design Principles
+Minimalism: Clean layouts with generous whitespace (16px-32px padding/margins).
+Elegance: Professional, polished, and student-focused.
+Responsiveness: Mobile-first, with breakpoints:
+Mobile: 320px-767px.
+Tablet: 768px-1023px.
+Desktop: 1024px+.
+Animations:
+Hovers: Scale up (transform: scale(1.05)), shadow increase, 300ms ease-in-out.
+Page Transitions: Fade-in (opacity: 0 to 1, 400ms) or slide-in (translateX: 50px to 0).
+Loaders: Rotating SVG spinner (black-and-white, 24px).
+Typography
+Inter:
+Headings (h1-h3): 700 weight, 24px (mobile), 32px (desktop).
+Subheadings: 500 weight, 18px (mobile), 20px (desktop).
+Body: 400 weight, 16px (mobile), 18px (desktop).
+Roboto Mono:
+Secondary text (e.g., timestamps, code-like elements): 400 weight, 12px (mobile), 14px (desktop).
+Line Height: 1.5 (body), 1.3 (headings).
+Letter Spacing: 0.02em for headings, 0.01em for body.
+Pages
+Home
+Hero Section:
+Title: “Aptify” (Inter, 48px mobile, 64px desktop, bold).
+Slogan: “Sharpen your aptitude. Conquer your campus placement.” (Inter, 20px mobile, 24px desktop).
+CTA: “Start Practicing” button (white text, black background, hover: scale 1.1).
+Features Overview:
+3-4 cards highlighting quizzes, leaderboard, and PDF reports.
+Each card: Icon, title, 2-line description, hover effect (lift + shadow).
+Footer: GitHub and LinkedIn icons linking to developer’s profiles (see below).
+Practice
+Displays interactive category cards (Aptitude, Reasoning, Verbal, Mixed, Leaderboard).
+Grid layout: 1 column (mobile), 2 columns (tablet), 3 columns (desktop).
+Button: “Start Custom Quiz” for manual quiz setup.
+Start Quiz
+Modal or page for quiz initialization:
+Username input (prefilled from localStorage).
+Quiz type dropdown (Aptitude, Reasoning, Verbal, Mixed).
+Optional: Quiz length slider (10-20 questions, default 10).
+“Start Quiz” button with loading spinner.
+Leaderboard
+Table or card-based list of top 10 scores.
+Columns: Rank, Username, Score, Time, Date.
+Hover effect: Row highlights (gray background, scale 1.02).
+Filter dropdown: Show scores by quiz type (optional).
+About
+Content:
+Platform purpose: “Aptify helps BTech students prepare for placement exams with dynamic quizzes and detailed analytics.”
+Roadmap: Future features (e.g., offline mode, custom difficulties).
+Developer info: “Built by [Your Name]” with GitHub and LinkedIn icons.
+Design: Minimal, text-heavy with centered icons and subtle dividers.
+Navigation Bar
+Position: Fixed at the top, full-width, 64px height.
+Items (in order): Home | Practice | Start Quiz | Leaderboard | About.
+Styling:
+Background: Black (#000000).
+Text: White (#FFFFFF), Inter 500, 16px.
+Active/Hover: 2px gray bottom border (#666666), text fades to #CCCCCC.
+Transition: 200ms ease-in-out for border and text.
+Mobile Behavior:
+Hamburger menu (3 horizontal lines, white, 24px).
+Menu slides in from right (400ms, opacity: 0 to 1).
+Items stack vertically with 16px spacing and gray dividers (#333333).
+Accessibility:
+ARIA label: “Main navigation”.
+Keyboard focus: Outline (2px white) on active items.
+Category Cards (Practice Page)
+Categories:
+Aptitude: Math, percentages, ratios.
+Reasoning: Puzzles, logical sequences.
+Verbal: Comprehension, synonyms, antonyms.
+Mixed: Random mix of all categories.
+Leaderboard: Links to leaderboard page.
+Card Design:
+Size: 100% width (mobile), 300x200px (desktop).
+Background: White (#FFFFFF) with glassmorphism (backdrop-filter: blur(8px)).
+Border: 1px gray (#CCCCCC).
+Content:
+Icon: Font Awesome/Heroicons (e.g., brain, calculator), 32px, centered.
+Title: Inter 700, 20px, centered.
+Description: Inter 400, 14px, 2-3 lines, centered.
+Hover Effect:
+Scale: transform: scale(1.05).
+Overlay: Semi-transparent black (#00000080) with “Start Practice” (white, Inter 500, 16px).
+Shadow: box-shadow: 0 6px 20px rgba(0,0,0,0.15).
+Transition: 300ms ease-in-out.
+Click Behavior: Opens quiz setup modal/page.
+Example Leaderboard Card
+Title: Leaderboard
+Description: “View top scorers, compare your progress, and track performance.”
+Icon: Trophy (🏆) or bar chart (Font Awesome fa-chart-bar).
+Hover: Same as other cards, with “View Leaderboard” overlay.
+Social Media Icons
+Location:
+Footer (all pages): Centered, 32px icons, 16px spacing.
+About page: Below developer info.
+Icons:
+GitHub: Font Awesome fa-github or Heroicons github.
+LinkedIn: Font Awesome fa-linkedin or Heroicons linkedin.
+Links (placeholders; replace with your URLs):
+GitHub: https://github.com/your-username
+LinkedIn: https://linkedin.com/in/your-username
+Styling:
+Color: White (#FFFFFF) on black background.
+Hover: Scale 1.1, fade to gray (#CCCCCC).
+Transition: 200ms ease-in-out.
+Accessibility:
+ARIA labels: “GitHub profile”, “LinkedIn profile”.
+Alt text for SVGs: “GitHub icon”, “LinkedIn icon”.
+Scrollbars
+Custom Styling:
+css
+
+Copy
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #333333;
+}
+::-webkit-scrollbar-thumb {
+  background: #CCCCCC;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #999999;
+}
+🧠 Quiz Initialization
+Username Input
+UI: Modal (centered, 300px wide mobile, 400px desktop) or dedicated page.
+Input Field:
+Placeholder: “Enter your username”.
+Styling: White background, black text, 1px gray border, 12px padding.
+Focus: 2px white outline.
+Validation:
+Required: Cannot be empty.
+Length: 3-20 characters.
+Characters: Alphanumeric, underscores only (regex: /^[a-zA-Z0-9_]+$/).
+Error: “Username must be 3-20 alphanumeric characters” (red text, 12px).
+Storage: Save in localStorage as aptify_username.
+Behavior:
+Prefill with existing localStorage value.
+On submit, validate and proceed to quiz setup.
+Disable submit button during validation (debounce 300ms).
+Quiz Setup
+Fields:
+Quiz Type: Dropdown (Aptitude, Reasoning, Verbal, Mixed).
+Quiz Length: Slider (10-20 questions, default 10, step 1).
+UI:
+Dropdown: White background, black text, gray border.
+Slider: Custom thumb (white, 16px), gray track.
+Button: “Start Quiz” (white text, black background, hover: scale 1.1).
+Loading State:
+Show spinner (24px, black-and-white) during Gemini API call.
+Text: “Fetching questions…”.
+🧠 Gemini API Integration
+API Usage
+Endpoint: Google Gemini Free API (configure via API key).
+Request:
+Number of Questions: 10-20 (based on user selection).
+Type: MCQ with 4 options.
+Topics: Aptitude (math, percentages), Reasoning (logic, puzzles), Verbal (comprehension, vocabulary), Mixed.
+Difficulty: Medium (default, adjust if supported).
+Response Format (Expected):
+json
+
+Copy
+[
+  {
+    "question": "If 5x + 3 = 18, what is x?",
+    "options": ["2", "3", "4", "5"],
+    "correct_answer": "3",
+    "explanation": "5x + 3 = 18 => 5x = 15 => x = 3"
+  },
+  ...
+]
+Storage: Cache in localStorage as aptify_questions to avoid repeated calls.
+Error Handling
+API Failure:
+Message: “Could not load questions, please try again.”
+Button: “Retry” (reattempts API call).
+Spinner: Show during retries.
+Invalid Response:
+Fallback: Load 10 predefined questions from quiz.js (e.g., sample math, reasoning, verbal questions).
+Example:
+javascript
+
+Copy
+const fallbackQuestions = [
+  {
+    question: "What is 10 + 15?",
+    options: ["20", "25", "30", "35"],
+    correct_answer: "25",
+    explanation: "10 + 15 = 25"
+  },
+  ...
+];
+Rate Limits:
+Retry after 5-second delay.
+Limit retries to 3 attempts.
+Regeneration
+UI: After loading questions, show first question preview.
+Button: “Regenerate Questions” (white text, black background).
+Logic: Fetch new questions via API, limit to 3 regenerations.
+Storage: Replace aptify_questions in localStorage.
+📝 Quiz Functionality
+Quiz UI
+Layout:
+Header:
+Timer: “Time: 00:00” (MM:SS, Inter 500, 16px, right-aligned).
+Question Number: “Question 1/10” (Inter 500, 16px, left-aligned).
+Body:
+Question: Inter 500, 18px, centered.
+Options: 4 radio buttons, white background, black text, 1px gray border.
+Buttons: “Skip” (gray background, white text), “Next” (black background, white text).
+Footer:
+Progress Bar: Gray track, white fill, percentage-based (e.g., 10% per question).
+Timer:
+Starts on quiz load.
+Updates every second (JavaScript setInterval).
+Pauses on tab switch (use visibilitychange event).
+Navigation:
+“Skip”: Mark question as skipped, proceed to next.
+“Next”: Submit answer, disable button for 300ms (debounce), load next question.
+No back navigation (mimics real exams).
+Scoring
+Rules:
+Correct: +1 point.
+Incorrect/Skipped: 0 points.
+Storage:
+Save answers in localStorage as aptify_answers (array of { question, user_answer, correct_answer }).
+Results
+Metrics:
+Total Score: e.g., 7/10.
+Time Taken: e.g., 12:34 (MM:SS).
+Breakdown: Correct, Incorrect, Skipped counts.
+Section-wise: e.g., Aptitude 3/4, Reasoning 2/3 (if applicable).
+UI:
+Summary card: Score, time, breakdown.
+Chart.js Visuals:
+Pie Chart: Correct (white), Incorrect (gray), Skipped (dark gray).
+Bar Chart: Section-wise scores (white bars, black background).
+Buttons: “Download PDF”, “View Leaderboard”, “Try Again”.
+Storage:
+Save in localStorage as aptify_results (array of { username, score, time, date, quiz_type }).
+Update leaderboard.
+🏁 Post-Quiz: PDF Report
+Content
+Header:
+Title: “Aptify Quiz Report” (Inter 700, 24px).
+Subtitle: Username, Date, Time (e.g., “John_Doe, May 19, 2025, 12:18 PM”).
+Summary:
+Total Score: e.g., 7/10.
+Time Taken: e.g., 12:34.
+Breakdown: Correct, Incorrect, Skipped (table or text).
+Section-wise Scores:
+Table: Category, Score (e.g., Aptitude: 3/4).
+Question-wise Breakdown:
+Table: Question, User Answer, Correct Answer, Explanation.
+Charts:
+Pie Chart: Correct vs. Incorrect vs. Skipped.
+Bar Chart: Section-wise scores.
+Footer:
+Slogan: “Sharpen your aptitude. Conquer your campus placement.”
+GitHub and LinkedIn icons (linked).
+Implementation
+Tools:
+jsPDF: Create PDF document.
+html2canvas: Convert Chart.js canvases to PNG images.
+Steps:
+Render results page with charts.
+Use html2canvas to capture charts (ensure canvas is visible).
+Use jsPDF to add text, tables, and images.
+Trigger download with filename: Aptify_Report_[username]_[date].pdf.
+Bug Fix:
+Ensure html2canvas captures correct canvas (use document.querySelector).
+Handle CORS: Use local fonts/icons.
+Test on Safari (known jsPDF issues).
+Styling:
+Fonts: Embed Inter or use Helvetica.
+Colors: Black text, white background, gray accents.
+📊 Leaderboard Page
+Data
+Fields:
+Username: From localStorage.
+Score: e.g., 7/10.
+Time: e.g., 12:34 (MM:SS).
+Date: e.g., “May 19, 2025”.
+Storage:
+Primary: localStorage as aptify_leaderboard (JSON array).
+Optional: backend/leaderboard.json via FastAPI endpoint.
+Sorting:
+Primary: Highest score.
+Secondary: Fastest time (for ties).
+Limit: Top 10 entries.
+UI
+Layout:
+Table (desktop): Columns for Rank, Username, Score, Time, Date.
+Cards (mobile): Stacked, each with all fields.
+Styling:
+Background: Black.
+Text: White (headers), gray (rows).
+Hover: Row/card highlights (#333333), scales 1.02.
+Interactivity:
+Optional dropdown: Filter by quiz type.
+Clear button: Reset leaderboard (confirm via modal).
+📌 UX Details
+Animations
+Page Transitions: Fade (opacity: 0 to 1, 400ms).
+Card Hovers: Lift (translateY(-5px)), shadow increase.
+Button Hovers: Scale 1.1, background fade.
+Modals: Slide up (translateY: 100px to 0, 300ms).
+Debouncing
+All buttons: 300ms debounce (use lodash.debounce or custom).
+Example: Disable “Next” button after click until question loads.
+Error States
+Messages:
+Username: “Please enter a valid username (3-20 characters).”
+API: “Failed to fetch questions. Retry?”
+PDF: “PDF generation failed. Try again.”
+UI: Red text (gray for contrast), 12px, below input/button.
+Loading
+Spinner: 24px, black-and-white, rotating SVG.
+Text: “Loading…” (Inter 400, 14px).
+📂 Folder Structure
+text
+
+Copy
+aptify/
+├── frontend/
+│   ├── index.html           # Home page
+│   ├── practice.html        # Practice page
+│   ├── quiz.html            # Quiz page
+│   ├── leaderboard.html     # Leaderboard page
+│   ├── about.html           # About page
+│   ├── styles/
+│   │   └── main.css         # Tailwind CSS + custom styles
+│   ├── js/
+│   │   ├── app.js           # Nav, animations, global logic
+│   │   ├── quiz.js          # Quiz logic (timer, scoring)
+│   │   ├── leaderboard.js   # Leaderboard logic
+│   │   ├── pdf.js           # PDF generation
+│   │   ├── gemini.js        # Gemini API integration
+│   ├── assets/
+│   │   ├── icons/           # SVGs (brain, trophy, github, linkedin)
+│   │   ├── fonts/           # Inter, Roboto Mono
+├── backend/
+│   ├── app.py               # FastAPI/Flask app
+│   ├── gemini_handler.py    # Gemini API logic
+│   ├── leaderboard.json     # Optional leaderboard storage
+├── README.md                # Documentation
+├── requirements.txt         # Python dependencies
+├── package.json             # Frontend dependencies (optional)
+📘 README.md Content
+README.md
+markdown
+Show inline
+💬 Branding Guidelines
+Name: Aptify (consistent across UI, PDF, README).
+Slogan: Sharpen your aptitude. Conquer your campus placement. (home page, PDF footer).
+Tone: Professional, motivational, student-centric.
+Logo (Optional): Text-based (Inter) or minimal icon (brain/pencil).
+🛠️ Additional Notes
+Edge Cases
+No Internet: Cache 10 sample questions in quiz.js.
+Long Usernames: Truncate to 15 characters in UI (e.g., “John_Doe_123…”).
+Large Leaderboard: Limit to 100 entries, show top 10.
+PDF Size: Optimize charts (scale down to 300px width) for <2MB files.
+Performance
+Minify CSS/JS (use terser for JS, cssnano for CSS).
+Lazy-load icons/fonts (use loading="lazy" for SVGs).
+CDN: Tailwind CSS, Chart.js, Font Awesome (fallback to local).
+Testing
+Browsers: Chrome, Firefox, Safari (desktop/mobile).
+Devices: 320px (iPhone SE), 1440px (laptop).
+Scenarios:
+API failure (use mock responses).
+PDF generation (test Safari).
+High score ties (verify time-based sorting).
