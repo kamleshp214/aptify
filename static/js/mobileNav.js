@@ -1,56 +1,52 @@
 /**
- * Specialized mobile navigation handler for Aptify
+ * Mobile navigation handler for Aptify
  */
-document.addEventListener('DOMContentLoaded', function() {
-    // Get navigation elements
+document.addEventListener('DOMContentLoaded', () => {
     const navbarToggle = document.getElementById('navbarToggle');
     const navbarMenu = document.getElementById('navbarMenu');
-    
-    // Add click event listener to toggle button
+
     if (navbarToggle && navbarMenu) {
-        navbarToggle.addEventListener('click', function() {
-            // Toggle the 'open' class on the menu
+        // Toggle menu and icon
+        const toggleMenu = () => {
             navbarMenu.classList.toggle('open');
-            
-            // Change the icon when menu is opened/closed
             const icon = navbarToggle.querySelector('i');
             if (icon) {
-                if (navbarMenu.classList.contains('open')) {
-                    icon.classList.remove('fa-bars');
-                    icon.classList.add('fa-times');
-                } else {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                }
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
             }
+        };
+
+        // Click event
+        navbarToggle.addEventListener('click', toggleMenu);
+
+        // Touch event for mobile
+        navbarToggle.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            toggleMenu();
         });
-        
+
         // Close menu when clicking outside
-        document.addEventListener('click', function(event) {
-            if (navbarMenu.classList.contains('open') && 
-                !navbarMenu.contains(event.target) && 
+        document.addEventListener('click', (event) => {
+            if (navbarMenu.classList.contains('open') &&
+                !navbarMenu.contains(event.target) &&
                 !navbarToggle.contains(event.target)) {
                 navbarMenu.classList.remove('open');
-                
-                // Reset icon
                 const icon = navbarToggle.querySelector('i');
                 if (icon) {
-                    icon.classList.remove('fa-times');
                     icon.classList.add('fa-bars');
+                    icon.classList.remove('fa-times');
                 }
             }
         });
-        
-        // Close menu when pressing escape key
-        document.addEventListener('keydown', function(event) {
+
+        // Close menu on Escape key
+        document.addEventListener('keydown', (event) => {
             if (event.key === 'Escape' && navbarMenu.classList.contains('open')) {
                 navbarMenu.classList.remove('open');
-                
-                // Reset icon
                 const icon = navbarToggle.querySelector('i');
                 if (icon) {
-                    icon.classList.remove('fa-times');
                     icon.classList.add('fa-bars');
+                    icon.classList.remove('fa-times');
                 }
             }
         });

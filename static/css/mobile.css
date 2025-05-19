@@ -1,11 +1,49 @@
-/* Mobile-specific styles for Aptify */
+:root {
+    --mobile-nav-height: 64px;
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --transition-normal: 0.3s;
+    --color-white: #ffffff;
+}
 
 @media (max-width: 768px) {
-    /* Fix navbar toggle visibility */
+    .navbar-menu {
+        display: none;
+    }
+    
+    .navbar-menu.open {
+        display: block;
+        position: fixed;
+        top: var(--mobile-nav-height);
+        left: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.95);
+        padding: var(--space-md);
+        z-index: 999;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+    
+    .navbar-item {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: var(--space-lg) var(--space-md);
+        margin: var(--space-sm) 0;
+        border-radius: 8px;
+        transition: background-color var(--transition-normal) ease-in-out;
+    }
+    
+    .navbar-item:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        transform: none;
+    }
+    
     .navbar-menu-toggle {
-        display: block !important;
+        display: block;
         cursor: pointer;
-        color: white;
+        color: var(--color-white);
         font-size: 1.5rem;
         background: transparent;
         border: 1px solid rgba(255, 255, 255, 0.2);
@@ -15,42 +53,34 @@
         align-items: center;
         justify-content: center;
         border-radius: 4px;
+        transition: all var(--transition-normal) ease-in-out;
+        z-index: 1000;
     }
     
-    /* Fix mobile navigation */
-    .navbar-menu {
-        position: fixed;
-        top: var(--mobile-nav-height);
-        left: 0;
-        width: 100%;
-        height: calc(100vh - var(--mobile-nav-height));
-        background-color: black;
-        display: flex;
-        flex-direction: column;
-        padding: 24px 16px;
-        transform: translateX(-100%);
-        transition: transform 0.3s ease;
-        z-index: 999;
+    .navbar-menu-toggle:hover {
+        background-color: rgba(255, 255, 255, 0.1);
     }
     
-    .navbar-menu.open {
-        transform: translateX(0);
+    .navbar-menu-toggle:active {
+        background-color: rgba(255, 255, 255, 0.2);
+        transform: scale(0.95);
     }
     
-    /* Fix category cards to be black with white text */
     .category-card {
         background-color: black !important;
         color: white !important;
         border: 1px solid #333;
     }
     
-    /* Make sure the top portion isn't cut off */
     .content {
         padding-top: calc(var(--mobile-nav-height) + 16px);
     }
     
-    /* Ensure navbar is always visible */
     .navbar {
         background-color: black;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
     }
 }
