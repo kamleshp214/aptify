@@ -1,0 +1,56 @@
+/* Mobile-specific styles for Aptify */
+
+@media (max-width: 768px) {
+    /* Fix navbar toggle visibility */
+    .navbar-menu-toggle {
+        display: block !important;
+        cursor: pointer;
+        color: white;
+        font-size: 1.5rem;
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+    }
+    
+    /* Fix mobile navigation */
+    .navbar-menu {
+        position: fixed;
+        top: var(--mobile-nav-height);
+        left: 0;
+        width: 100%;
+        height: calc(100vh - var(--mobile-nav-height));
+        background-color: black;
+        display: flex;
+        flex-direction: column;
+        padding: 24px 16px;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        z-index: 999;
+    }
+    
+    .navbar-menu.open {
+        transform: translateX(0);
+    }
+    
+    /* Fix category cards to be black with white text */
+    .category-card {
+        background-color: black !important;
+        color: white !important;
+        border: 1px solid #333;
+    }
+    
+    /* Make sure the top portion isn't cut off */
+    .content {
+        padding-top: calc(var(--mobile-nav-height) + 16px);
+    }
+    
+    /* Ensure navbar is always visible */
+    .navbar {
+        background-color: black;
+    }
+}
