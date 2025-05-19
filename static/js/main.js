@@ -9,8 +9,21 @@ document.addEventListener('DOMContentLoaded', function() {
     const navbarMenu = document.getElementById('navbarMenu');
     
     if (navbarToggle && navbarMenu) {
-        navbarToggle.addEventListener('click', function() {
+        navbarToggle.addEventListener('click', function(e) {
+            e.stopPropagation(); // Prevent event bubbling
             navbarMenu.classList.toggle('open');
+            
+            // Toggle menu icon for visual feedback
+            const menuIcon = navbarToggle.querySelector('i');
+            if (menuIcon) {
+                if (navbarMenu.classList.contains('open')) {
+                    menuIcon.classList.remove('fa-bars');
+                    menuIcon.classList.add('fa-times');
+                } else {
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                }
+            }
         });
     }
     
