@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<section class="hero fade-in">
+    <div class="hero-content">
+        <h1 class="hero-title">Aptify</h1>
+        <p class="hero-slogan">Sharpen your aptitude. Conquer your campus placement.</p>
+        <a href="{{ url_for('practice') }}" class="btn btn-primary">Start Practicing</a>
+    </div>
+</section>
+
+<section class="features">
+    <h2 class="section-title">Features</h2>
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-brain"></i>
+            </div>
+            <h3 class="feature-title">Dynamic Quizzes</h3>
+            <p class="feature-description">Practice with AI-generated questions across various aptitude categories.</p>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-chart-bar"></i>
+            </div>
+            <h3 class="feature-title">Performance Analytics</h3>
+            <p class="feature-description">Get detailed reports with charts and insights on your quiz performance.</p>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-trophy"></i>
+            </div>
+            <h3 class="feature-title">Leaderboard</h3>
+            <p class="feature-description">Compare your progress with peers and track improvement over time.</p>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-file-pdf"></i>
+            </div>
+            <h3 class="feature-title">PDF Reports</h3>
+            <p class="feature-description">Download comprehensive PDF reports with score breakdowns and analysis.</p>
+        </div>
+    </div>
+</section>
+
+<section class="cta">
+    <h2 class="cta-title">Ready to boost your placement preparation?</h2>
+    <p class="cta-description">Start practicing now and improve your aptitude skills for campus placements.</p>
+    <a href="{{ url_for('practice') }}" class="btn btn-primary">Begin Practice</a>
+</section>
+{% endblock %}

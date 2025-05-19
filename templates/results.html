@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<section class="results-container fade-in">
+    <div class="results-header">
+        <h1 class="results-title">Quiz Results</h1>
+        <div class="results-actions">
+            <button id="downloadPdfBtn" class="btn btn-primary">Download PDF</button>
+            <button id="retakeQuizBtn" class="btn btn-secondary">Retake Quiz</button>
+        </div>
+    </div>
+
+    <div class="results-summary">
+        <div class="summary-card">
+            <h3 class="summary-title">Score</h3>
+            <div class="summary-content">
+                <span id="scoreValue" class="summary-value">0</span>
+                <span id="scorePercentage" class="summary-percentage">0%</span>
+            </div>
+        </div>
+        
+        <div class="summary-card">
+            <h3 class="summary-title">Time</h3>
+            <div class="summary-content">
+                <span id="timeValue" class="summary-value">00:00</span>
+            </div>
+        </div>
+        
+        <div class="summary-card">
+            <h3 class="summary-title">Category</h3>
+            <div class="summary-content">
+                <span id="categoryValue" class="summary-value">-</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="results-charts">
+        <div class="chart-container">
+            <h3 class="chart-title">Performance Breakdown</h3>
+            <canvas id="pieChart"></canvas>
+        </div>
+        
+        <div class="chart-container">
+            <h3 class="chart-title">Score Distribution</h3>
+            <canvas id="barChart"></canvas>
+        </div>
+    </div>
+
+    <div class="results-details">
+        <h3 class="details-title">Question Analysis</h3>
+        <div id="questionAnalysis" class="question-analysis">
+            <!-- Question analysis will be populated dynamically -->
+        </div>
+    </div>
+
+    <div class="results-footer">
+        <button id="saveToLeaderboardBtn" class="btn btn-primary">Save to Leaderboard</button>
+        <a href="{{ url_for('leaderboard') }}" class="btn btn-secondary">View Leaderboard</a>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/results.js') }}"></script>
+<script src="{{ url_for('static', filename='js/pdf-generator.js') }}"></script>
+{% endblock %}

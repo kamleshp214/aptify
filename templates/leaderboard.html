@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<section class="leaderboard-container fade-in">
+    <div class="leaderboard-header">
+        <h1 class="leaderboard-title">Leaderboard</h1>
+        <div class="leaderboard-filters">
+            <div class="filter-group">
+                <label for="categoryFilter">Category:</label>
+                <select id="categoryFilter">
+                    <option value="all">All</option>
+                    <option value="aptitude">Aptitude</option>
+                    <option value="reasoning">Reasoning</option>
+                    <option value="verbal">Verbal</option>
+                    <option value="mixed">Mixed</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="leaderboard-table-container">
+        <table class="leaderboard-table">
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Username</th>
+                    <th>Score</th>
+                    <th>Time</th>
+                    <th>Date</th>
+                    <th>Category</th>
+                </tr>
+            </thead>
+            <tbody id="leaderboardBody">
+                <!-- Leaderboard entries will be populated dynamically -->
+                <tr class="leaderboard-placeholder">
+                    <td colspan="6">Loading leaderboard data...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="leaderboard-empty" id="emptyLeaderboard" style="display: none;">
+        <div class="empty-icon">
+            <i class="fas fa-trophy"></i>
+        </div>
+        <h2 class="empty-title">No entries yet</h2>
+        <p class="empty-message">Be the first to appear on the leaderboard by completing a quiz!</p>
+        <a href="{{ url_for('quiz') }}" class="btn btn-primary">Take a Quiz</a>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/leaderboard.js') }}"></script>
+{% endblock %}

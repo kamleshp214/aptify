@@ -1,0 +1,108 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<section class="about-container fade-in">
+    <div class="about-header">
+        <h1 class="about-title">About Aptify</h1>
+    </div>
+
+    <div class="about-content">
+        <div class="about-section">
+            <h2 class="section-title">Our Mission</h2>
+            <p class="section-text">
+                Aptify helps BTech students prepare for placement exams with dynamic quizzes and detailed analytics. 
+                We believe in providing a focused, distraction-free environment for practicing aptitude questions 
+                that are commonly asked in campus placement tests.
+            </p>
+        </div>
+
+        <div class="about-section">
+            <h2 class="section-title">Features</h2>
+            <ul class="feature-list">
+                <li class="feature-item">
+                    <i class="fas fa-brain feature-icon"></i>
+                    <div class="feature-text">
+                        <h3>Dynamic Question Generation</h3>
+                        <p>AI-powered MCQ generation across various aptitude categories using the Google Gemini API.</p>
+                    </div>
+                </li>
+                <li class="feature-item">
+                    <i class="fas fa-chart-bar feature-icon"></i>
+                    <div class="feature-text">
+                        <h3>Performance Analytics</h3>
+                        <p>Detailed score breakdowns, question-by-question analysis, and visual charts.</p>
+                    </div>
+                </li>
+                <li class="feature-item">
+                    <i class="fas fa-file-pdf feature-icon"></i>
+                    <div class="feature-text">
+                        <h3>PDF Reports</h3>
+                        <p>Download comprehensive PDF reports with performance metrics and charts.</p>
+                    </div>
+                </li>
+                <li class="feature-item">
+                    <i class="fas fa-trophy feature-icon"></i>
+                    <div class="feature-text">
+                        <h3>Leaderboard</h3>
+                        <p>Track your progress and compare with peers (no login required).</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="about-section">
+            <h2 class="section-title">Future Roadmap</h2>
+            <div class="roadmap">
+                <div class="roadmap-item">
+                    <div class="roadmap-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="roadmap-content">
+                        <h3>Custom Difficulty Levels</h3>
+                        <p>Choose between easy, medium, and hard questions based on your preparation level.</p>
+                    </div>
+                </div>
+                <div class="roadmap-item">
+                    <div class="roadmap-icon">
+                        <i class="fas fa-wifi-slash"></i>
+                    </div>
+                    <div class="roadmap-content">
+                        <h3>Offline Mode</h3>
+                        <p>Practice even without an internet connection with preloaded question sets.</p>
+                    </div>
+                </div>
+                <div class="roadmap-item">
+                    <div class="roadmap-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div class="roadmap-content">
+                        <h3>Company-Specific Question Banks</h3>
+                        <p>Practice with questions tailored to specific company placement exams.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="about-section">
+            <h2 class="section-title">About the Developer</h2>
+            <div class="developer-info">
+                <p class="developer-bio">
+                    Aptify was designed and developed by <strong>Your Name</strong>, a passionate software engineer 
+                    focused on creating educational tools for students. If you'd like to connect or contribute to this 
+                    project, feel free to reach out through the links below.
+                </p>
+                <div class="developer-social">
+                    <a href="https://github.com/your-username" class="social-link" target="_blank">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://linkedin.com/in/your-username" class="social-link" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

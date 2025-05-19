@@ -1,0 +1,141 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<section class="page-header fade-in">
+    <h1 class="page-title">Practice</h1>
+    <p class="page-subtitle">Choose a category to start practicing</p>
+</section>
+
+<section class="categories">
+    <div class="categories-grid">
+        <div class="category-card" data-category="aptitude">
+            <div class="category-icon">
+                <i class="fas fa-calculator"></i>
+            </div>
+            <h3 class="category-title">Aptitude</h3>
+            <p class="category-description">Practice math problems, percentages, ratios, time and work, and more.</p>
+            <div class="category-overlay">
+                <a href="{{ url_for('quiz') }}?type=aptitude" class="category-btn">Start Practice</a>
+            </div>
+        </div>
+        
+        <div class="category-card" data-category="reasoning">
+            <div class="category-icon">
+                <i class="fas fa-brain"></i>
+            </div>
+            <h3 class="category-title">Reasoning</h3>
+            <p class="category-description">Enhance logical thinking with puzzles, sequences, and pattern recognition.</p>
+            <div class="category-overlay">
+                <a href="{{ url_for('quiz') }}?type=reasoning" class="category-btn">Start Practice</a>
+            </div>
+        </div>
+        
+        <div class="category-card" data-category="verbal">
+            <div class="category-icon">
+                <i class="fas fa-book"></i>
+            </div>
+            <h3 class="category-title">Verbal</h3>
+            <p class="category-description">Improve language skills with comprehension, vocabulary, and grammar.</p>
+            <div class="category-overlay">
+                <a href="{{ url_for('quiz') }}?type=verbal" class="category-btn">Start Practice</a>
+            </div>
+        </div>
+        
+        <div class="category-card" data-category="mixed">
+            <div class="category-icon">
+                <i class="fas fa-puzzle-piece"></i>
+            </div>
+            <h3 class="category-title">Mixed</h3>
+            <p class="category-description">Challenge yourself with a combination of aptitude, reasoning, and verbal questions.</p>
+            <div class="category-overlay">
+                <a href="{{ url_for('quiz') }}?type=mixed" class="category-btn">Start Practice</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="custom-quiz">
+    <h2 class="section-title">Customize Your Quiz</h2>
+    <div class="custom-quiz-container">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username" maxlength="20" pattern="[a-zA-Z0-9_]+" required>
+            <div class="error-message" id="usernameError"></div>
+        </div>
+        
+        <div class="form-group">
+            <label for="quizType">Quiz Type</label>
+            <select id="quizType" name="quizType">
+                <option value="mixed">Mixed</option>
+                <option value="aptitude">Aptitude</option>
+                <option value="reasoning">Reasoning</option>
+                <option value="verbal">Verbal</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="questionCount">Number of Questions: <span id="questionCountValue">10</span></label>
+            <input type="range" id="questionCount" name="questionCount" min="10" max="20" value="10" step="1">
+        </div>
+        
+        <button id="startCustomQuiz" class="btn btn-primary">Start Custom Quiz</button>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Load saved username from localStorage
+    const savedUsername = localStorage.getItem('aptify_username');
+    if (savedUsername) {
+        document.getElementById('username').value = savedUsername;
+    }
+    
+    // Update question count display when slider changes
+    const questionCountSlider = document.getElementById('questionCount');
+    const questionCountValue = document.getElementById('questionCountValue');
+    
+    questionCountSlider.addEventListener('input', function() {
+        questionCountValue.textContent = this.value;
+    });
+    
+    // Handle custom quiz start
+    document.getElementById('startCustomQuiz').addEventListener('click', function() {
+        const username = document.getElementById('username').value.trim();
+        const quizType = document.getElementById('quizType').value;
+        const questionCount = document.getElementById('questionCount').value;
+        const usernameError = document.getElementById('usernameError');
+        
+        // Validate username
+        if (!username) {
+            usernameError.textContent = 'Username is required';
+            return;
+        }
+        
+        if (username.length < 3 || username.length > 20) {
+            usernameError.textContent = 'Username must be 3-20 characters';
+            return;
+        }
+        
+        if (!/^[a-zA-Z0-9_]+$/.test(username)) {
+            usernameError.textContent = 'Username must contain only letters, numbers, and underscores';
+            return;
+        }
+        
+        // Clear error message if validation passes
+        usernameError.textContent = '';
+        
+        // Save username to localStorage
+        localStorage.setItem('aptify_username', username);
+        
+        // Save quiz settings to localStorage
+        localStorage.setItem('aptify_quiz_type', quizType);
+        localStorage.setItem('aptify_question_count', questionCount);
+        
+        // Redirect to quiz page
+        window.location.href = `/quiz?type=${quizType}&count=${questionCount}`;
+    });
+});
+</script>
+{% endblock %}

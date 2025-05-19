@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<section class="quiz-container fade-in">
+    <!-- Quiz Header -->
+    <div class="quiz-header">
+        <div class="quiz-info">
+            <span class="quiz-type" id="quizType">Quiz Type: Loading...</span>
+            <span class="question-counter" id="questionCounter">Question: 0/0</span>
+        </div>
+        <div class="quiz-timer" id="quizTimer">Time: 00:00</div>
+    </div>
+
+    <!-- Username Modal -->
+    <div class="modal" id="usernameModal">
+        <div class="modal-content">
+            <h2 class="modal-title">Enter Your Information</h2>
+            <div class="form-group">
+                <label for="modalUsername">Username</label>
+                <input type="text" id="modalUsername" name="modalUsername" placeholder="Enter your username" maxlength="20" pattern="[a-zA-Z0-9_]+" required>
+                <div class="error-message" id="modalUsernameError"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="modalQuizType">Quiz Type</label>
+                <select id="modalQuizType" name="modalQuizType">
+                    <option value="mixed">Mixed</option>
+                    <option value="aptitude">Aptitude</option>
+                    <option value="reasoning">Reasoning</option>
+                    <option value="verbal">Verbal</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="modalQuestionCount">Number of Questions: <span id="modalQuestionCountValue">10</span></label>
+                <input type="range" id="modalQuestionCount" name="modalQuestionCount" min="10" max="20" value="10" step="1">
+            </div>
+            
+            <button id="startQuizBtn" class="btn btn-primary">Start Quiz</button>
+        </div>
+    </div>
+
+    <!-- Loading State -->
+    <div class="loading-container" id="loadingContainer">
+        <div class="spinner"></div>
+        <p class="loading-text">Fetching questions...</p>
+    </div>
+
+    <!-- Quiz Content -->
+    <div class="quiz-content" id="quizContent" style="display: none;">
+        <div class="question-container">
+            <h2 class="question-text" id="questionText">Loading question...</h2>
+            
+            <div class="options-container" id="optionsContainer">
+                <!-- Options will be dynamically generated here -->
+            </div>
+        </div>
+        
+        <div class="quiz-actions">
+            <button id="skipBtn" class="btn btn-secondary">Skip</button>
+            <button id="nextBtn" class="btn btn-primary" disabled>Next</button>
+        </div>
+    </div>
+
+    <!-- Error State -->
+    <div class="error-container" id="errorContainer" style="display: none;">
+        <div class="error-icon">
+            <i class="fas fa-exclamation-triangle"></i>
+        </div>
+        <h2 class="error-title">Could not load questions</h2>
+        <p class="error-message" id="errorMessage">There was an error loading the questions. Please try again.</p>
+        <button id="retryBtn" class="btn btn-primary">Retry</button>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/quiz.js') }}"></script>
+{% endblock %}

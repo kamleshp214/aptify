@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aptify - Professional Aptitude Test Platform</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Chart.js for data visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- jsPDF and html2canvas for PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <a href="{{ url_for('index') }}">Aptify</a>
+            </div>
+            <div class="navbar-menu-toggle" id="navbarToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="navbar-menu" id="navbarMenu">
+                <a href="{{ url_for('index') }}" class="navbar-item">Home</a>
+                <a href="{{ url_for('practice') }}" class="navbar-item">Practice</a>
+                <a href="{{ url_for('quiz') }}" class="navbar-item">Start Quiz</a>
+                <a href="{{ url_for('leaderboard') }}" class="navbar-item">Leaderboard</a>
+                <a href="{{ url_for('about') }}" class="navbar-item">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="social-icons">
+            <a href="https://github.com/your-username" aria-label="GitHub profile" target="_blank">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://linkedin.com/in/your-username" aria-label="LinkedIn profile" target="_blank">
+                <i class="fab fa-linkedin"></i>
+            </a>
+        </div>
+        <p class="copyright">© 2023 Aptify. All rights reserved.</p>
+    </footer>
+
+    <!-- Main JavaScript -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/animation.js') }}"></script>
+    
+    <!-- Page-specific JavaScript -->
+    {% block scripts %}{% endblock %}
+</body>
+</html>
