@@ -6,7 +6,7 @@ from typing import List, Dict, Any, Optional
 
 # Gemini API configuration
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
-GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent"
+GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent"
 
 def get_mcq_questions(quiz_type: str, num_questions: int) -> List[Dict[str, Any]]:
     """
