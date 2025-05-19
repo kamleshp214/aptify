@@ -33,14 +33,9 @@ document.addEventListener('DOMContentLoaded', function() {
         quizTypeElement.textContent = `Quiz Type: ${quizType.charAt(0).toUpperCase() + quizType.slice(1)}`;
     }
     
-    // Show username modal if not set
+    // Always show username modal before starting quiz
     username = localStorage.getItem('aptify_username');
-    if (!username) {
-        showUsernameModal();
-    } else {
-        // Start loading questions
-        fetchQuestions();
-    }
+    showUsernameModal();
     
     // Set up event listeners
     setupEventListeners();
@@ -89,26 +84,32 @@ function setupEventListeners() {
 function showUsernameModal() {
     const modal = document.getElementById('usernameModal');
     if (modal) {
-        modal.style.display = 'flex';
-        
-        // Pre-fill username if available
-        const modalUsername = document.getElementById('modalUsername');
-        if (modalUsername && username) {
-            modalUsername.value = username;
-        }
-        
-        // Set quiz type dropdown
-        const modalQuizType = document.getElementById('modalQuizType');
-        if (modalQuizType) {
-            modalQuizType.value = quizType;
-        }
-        
-        // Set question count slider
-        const modalQuestionCount = document.getElementById('modalQuestionCount');
-        const modalQuestionCountValue = document.getElementById('modalQuestionCountValue');
-        if (modalQuestionCount && modalQuestionCountValue) {
-            modalQuestionCount.value = questionCount;
-            modalQuestionCountValue.textContent = questionCount;
+        // Only show modal if username is not set or explicitly forced
+        if (!username) {
+            modal.style.display = 'flex';
+            
+            // Pre-fill username if available
+            const modalUsername = document.getElementById('modalUsername');
+            if (modalUsername && username) {
+                modalUsername.value = username;
+            }
+            
+            // Set quiz type dropdown
+            const modalQuizType = document.getElementById('modalQuizType');
+            if (modalQuizType) {
+                modalQuizType.value = quizType;
+            }
+            
+            // Set question count slider
+            const modalQuestionCount = document.getElementById('modalQuestionCount');
+            const modalQuestionCountValue = document.getElementById('modalQuestionCountValue');
+            if (modalQuestionCount && modalQuestionCountValue) {
+                modalQuestionCount.value = questionCount;
+                modalQuestionCountValue.textContent = questionCount;
+            }
+        } else {
+            // If username already exists, start fetching questions immediately
+            fetchQuestions();
         }
     }
 }

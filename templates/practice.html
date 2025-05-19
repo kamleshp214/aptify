@@ -57,11 +57,7 @@
 <section class="custom-quiz">
     <h2 class="section-title">Customize Your Quiz</h2>
     <div class="custom-quiz-container">
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" placeholder="Enter your username" maxlength="20" pattern="[a-zA-Z0-9_]+" required>
-            <div class="error-message" id="usernameError"></div>
-        </div>
+
         
         <div class="form-group">
             <label for="quizType">Quiz Type</label>
@@ -86,12 +82,6 @@
 {% block scripts %}
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Load saved username from localStorage
-    const savedUsername = localStorage.getItem('aptify_username');
-    if (savedUsername) {
-        document.getElementById('username').value = savedUsername;
-    }
-    
     // Update question count display when slider changes
     const questionCountSlider = document.getElementById('questionCount');
     const questionCountValue = document.getElementById('questionCountValue');
@@ -102,32 +92,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Handle custom quiz start
     document.getElementById('startCustomQuiz').addEventListener('click', function() {
-        const username = document.getElementById('username').value.trim();
         const quizType = document.getElementById('quizType').value;
         const questionCount = document.getElementById('questionCount').value;
-        const usernameError = document.getElementById('usernameError');
-        
-        // Validate username
-        if (!username) {
-            usernameError.textContent = 'Username is required';
-            return;
-        }
-        
-        if (username.length < 3 || username.length > 20) {
-            usernameError.textContent = 'Username must be 3-20 characters';
-            return;
-        }
-        
-        if (!/^[a-zA-Z0-9_]+$/.test(username)) {
-            usernameError.textContent = 'Username must contain only letters, numbers, and underscores';
-            return;
-        }
-        
-        // Clear error message if validation passes
-        usernameError.textContent = '';
-        
-        // Save username to localStorage
-        localStorage.setItem('aptify_username', username);
         
         // Save quiz settings to localStorage
         localStorage.setItem('aptify_quiz_type', quizType);
