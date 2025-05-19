@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Aptify - Professional Aptitude Test Platform</title>
     
     <!-- Fonts -->
@@ -39,6 +39,16 @@
                 <a href="{{ url_for('quiz') }}" class="navbar-item">Start Quiz</a>
                 <a href="{{ url_for('leaderboard') }}" class="navbar-item">Leaderboard</a>
                 <a href="{{ url_for('about') }}" class="navbar-item">About</a>
+                
+                <!-- Mobile Navigation Social Icons -->
+                <div class="mobile-nav-social">
+                    <a href="https://github.com/your-username" aria-label="GitHub profile" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/your-username" aria-label="LinkedIn profile" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
@@ -64,6 +74,23 @@
     <!-- Main JavaScript -->
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
     <script src="{{ url_for('static', filename='js/animation.js') }}"></script>
+    
+    <!-- Mobile Touch Optimization Script -->
+    <script>
+        // Fix for 300ms delay on mobile devices
+        document.addEventListener('touchstart', function() {}, {passive: true});
+        
+        // Fix for iOS viewport height issues
+        function setVH() {
+            let vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        }
+        
+        // Run on resize and page load
+        window.addEventListener('resize', setVH);
+        window.addEventListener('orientationchange', setVH);
+        setVH();
+    </script>
     
     <!-- Page-specific JavaScript -->
     {% block scripts %}{% endblock %}
